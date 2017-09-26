@@ -51,24 +51,6 @@ export class Node implements NodeT {
       this.position = position
     }
   }
-
-  // Fix for getters/setters and flow.
-  // https://github.com/facebook/flow/issues/2826
-  //
-  // $FlowFixMe
-  get _type(): string {
-    return this.type
-  }
-
-  // $FlowFixMe
-  get _data(): ?DataT {
-    return this.data ? this.data : null
-  }
-
-  // $FlowFixMe
-  get _position(): ?PositionT {
-    return this.position ? this.position : null
-  }
 }
 
 export default Node

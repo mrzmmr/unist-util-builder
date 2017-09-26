@@ -28,14 +28,6 @@ export class Parent extends Node implements ParentT {
 
     this.children = children
   }
-
-  // Fix for getters/setters and flow.
-  // https://github.com/facebook/flow/issues/2826
-  //
-  // $FlowFixMe
-  get _children() {
-    return this.children
-  }
 }
 
 export default Parent
