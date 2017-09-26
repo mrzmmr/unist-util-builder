@@ -1,0 +1,69 @@
+{
+  "name": "unist-util-builder",
+  "version": "1.0.0",
+  "description": "A helper class for building unist trees.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf out *.log",
+    "lint": "npm run xo && npm run flow",
+    "xo": "xo --fix src/*",
+    "flow": "flow",
+    "prebuild": "npm run clean && touch babel-debug.log && npm run lint",
+    "build": "babel src -d out --source-maps",
+    "start": "npm run build -- -w >> babel-debug.log 2>&1 &"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrzmmr/unist-util-builder.git"
+  },
+  "keywords": [
+    "unist",
+    "util",
+    "builder",
+    "unist-util",
+    "unist-builder",
+    "unist-util-builder"
+  ],
+  "author": "mrzmmr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrzmmr/unist-util-builder/issues"
+  },
+  "homepage": "https://github.com/mrzmmr/unist-util-builder#readme",
+  "babel": {
+    "plugins": [
+      "transform-class-properties"
+    ],
+    "presets": [
+      "flow",
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "xo": {
+    "space": 2,
+    "semicolon": false,
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint-plugin-flowtype": "^2.36.0",
+    "flow-bin": "^0.55.0",
+    "rimraf": "^2.6.2",
+    "xo": "^0.18.2"
+  }
+}
