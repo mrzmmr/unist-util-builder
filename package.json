@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf out *.log",
     "lint": "npm run xo && npm run flow",
-    "xo": "xo --fix src/*",
+    "xo": "xo --fix --cwd=src",
     "flow": "flow",
     "prebuild": "npm run clean && touch babel-debug.log && npm run lint",
     "build": "babel src -d out --source-maps",
