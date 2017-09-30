@@ -38,8 +38,9 @@ class Heading extends Parent implements HeadingT {
   }
 }
 
-remark.stringify(
+const result = remark.stringify(
   new Parent('root', [new Heading('Hello world!', 2)])
 )
 
+console.log(result)
 // => ## Hello world!\n
