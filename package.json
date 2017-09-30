@@ -4,12 +4,17 @@
   "description": "A helper class for building unist trees.",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf out *.log",
-    "lint": "npm run xo && npm run flow",
+    "babel": "babel src -d out --source-maps",
     "xo": "xo --fix --cwd=src",
+    "nyc": "nyc npm run tap",
     "flow": "flow",
+    "clean": "rimraf coverage .nyc_output out *.log",
+    "lint": "npm run xo && npm run flow",
+    "tap": "tap out/test/*.js",
+    "pretest": "npm run build",
+    "test": "npm run nyc",
     "prebuild": "npm run clean && touch babel-debug.log && npm run lint",
-    "build": "babel src -d out --source-maps",
+    "build": "npm run babel",
     "start": "npm run build -- -w >> babel-debug.log 2>&1 &"
   },
   "repository": {
@@ -50,6 +55,7 @@
     "space": 2,
     "semicolon": false,
     "parser": "babel-eslint",
+    "ignore": "test/**",
     "plugins": [
       "flowtype"
     ]
@@ -63,8 +69,10 @@
     "babel-preset-flow": "^6.23.0",
     "eslint-plugin-flowtype": "^2.36.0",
     "flow-bin": "^0.55.0",
+    "nyc": "^11.2.1",
     "remark": "^8.0.0",
     "rimraf": "^2.6.2",
+    "tap": "^10.7.2",
     "xo": "^0.18.2"
   }
 }
